@@ -1,0 +1,311 @@
+ Task_1
+                 	
+#include<stdio.h>
+void shiftLeft(int source[],int k,int size)
+{
+	int j;
+	for(j=0; j<size; j++)
+	{
+        if(j<size-k)
+    	{
+            source[j]=source[j+k];
+    	}
+    	else
+    	{
+    	source[j]=0;
+    	}
+	}
+    printf("\nFinal output= ");
+    for(j=0;j<size;j++)
+	{
+           printf("%d,",source[j]);
+	}
+}
+int main()
+{
+	int size,k,i;
+	printf("Enter Array Size= ");
+    scanf("%d",&size);
+	int source[size];
+   printf("\nEnter Array Elements= ");
+	for(i=0; i<size; i++)
+	{
+        scanf("%d",&source[i]);
+	}
+    printf("\nEnter 'k' positions= ");
+    scanf("%d",&k);
+    shiftLeft(source,k,size);
+	return 0;
+}
+ 
+ 
+Task_2
+ 
+#include<stdio.h>
+void shiftRight(int source[],int k,int size)
+{
+	int j;
+	for(j=size-1; j>=0; j--)
+	{
+       	if(j>=k)
+            source[j]=source[j-k];
+else
+{
+   	source[j]=0;
+}
+	}
+    printf("\nFinal output= ");
+    for(j=0;j<size;j++)
+	{
+           printf("%d,",source[j]);
+	}
+}
+int main()
+{
+	int size,k,i;
+	printf("Enter Array Size= ");
+    scanf("%d",&size);
+	int source[size];
+    printf("\nEnter Array Elements= ");
+	for(i=0; i<size; i++)
+	{
+        scanf("%d",&source[i]);
+	}
+    printf("\nEnter 'k' positions= ");
+    scanf("%d",&k);
+    shiftRight(source,k,size);
+	return 0;
+}
+ 
+ 
+Task_3
+ 
+#include<stdio.h>
+void rotateLeft(int source[],int k,int size)
+{
+   	int j,m;
+       for(j=0;j<k;j++)
+ 	  {
+          	int first=0,second=first+1;
+          	int temp=source[0];
+               for(m=0;m<size;m++)
+           	{
+                     source[first]=source[second];
+                     first=(first+1)%size;
+                     second=(first+1)%size;
+           	}
+               source[size-1]=temp;
+   	}
+       for(m=0;m<size;m++)
+   	{
+              printf("%d,",source[m]);
+   	}
+}
+int main()
+{
+ 	int size,k,i;
+	printf("Enter Array Size= ");
+    scanf("%d",&size);
+	int source[size];
+    printf("\nEnter Array Elements= ");
+	for(i=0; i<size; i++)
+	{
+        scanf("%d",&source[i]);
+	}
+    printf("\nEnter 'k' positions= ");
+    scanf("%d",&k);
+    rotateLeft(source,k,size);
+ return 0;
+}
+ 
+ 
+Task_4
+ 
+#include<stdio.h>
+void rotateRight(int source[],int k,int size)
+{
+   	int j,m;
+       for(j=0;j<k;j++)
+   	{
+          	int first=size-1,second=first-1;
+          	int temp=source[size-1];
+ 
+               for(m=0;m<size;m++)
+           	{
+                     source[first]=source[second];
+                     first=(first-1)%size;
+                     second=(first-1)%size;
+           	}
+               source[0]=temp;
+   	}
+       for(m=0;m<size;m++)
+   	{
+              printf("%d,",source[m]);
+   	}
+}
+int main()
+{
+ 	int size,k,i;
+	printf("Enter Array Size= ");
+    scanf("%d",&size);
+	int source[size];
+    printf("\nEnter Array Elements= ");
+	for(i=0; i<size; i++)
+	{
+        scanf("%d",&source[i]);
+	}
+    printf("\nEnter 'k' positions= ");
+    scanf("%d",&k);
+    rotateRight(source,k,size);
+ 
+  return 0;
+}
+ 
+ 
+Task_5
+ 
+#include<stdio.h>
+void Remove(int source[],int size,int element)
+{
+   	int m,n;
+       for(m=0;m<size;m++)
+   	{
+          	if(m==element)
+          	{
+                     for(n=m;n<size-1;n++)
+                 	{
+                            source[n]=source[n+1];
+ 
+                 	}
+                     source[size-1]=0;
+          	}
+   	}
+       for(m=0;m<size;m++)
+   	{
+              printf("%d,",source[m]);
+   	}
+}
+int main()
+{
+	int size,element,i;
+	printf("Enter Array Size= ");
+    scanf("%d",&size);
+	int source[size];
+    printf("\nEnter Array Elements= ");
+	for(i=0; i<size; i++)
+	{
+        scanf("%d",&source[i]);
+	}
+    printf("\nEnter idx for Remove= ");
+    scanf("%d",&element);
+    Remove(source,size,element);
+   return  0;
+}
+Task_7
+ 
+#include <stdio.h>
+int removeAll(int arr[], int *size, int element) {
+int newSize = 0;
+for (int i = 0; i < *size; i++) {
+if (arr[i] != element) {
+arr[newSize++] = arr[i];
+}
+}
+*size = newSize;
+return newSize;
+}
+int main() {
+int source[] = {4, 5, 6, 6, 4, 3, 6, 4};
+int size = sizeof(source) / sizeof(source[0]);
+int elementToRemove = 4;
+printf("Original array: ");
+for (int i = 0; i < size; i++) {
+printf("%d ", source[i]);
+}
+printf("\n");
+int newSize = removeAll(source, &size, elementToRemove);
+printf("Array after removing %d: ", elementToRemove);
+for (int i = 0; i < newSize; i++) {
+printf("%d ", source[i]);
+}
+printf("\n");
+return 0;
+}
+
+
+Task_8
+#include<stdio.h>
+void Repetition(int arr[],int size)
+{
+       int m,n,k,l,count=0,j=1,count2=0;
+       int arr2[size];
+       int copy[size];
+       for(m=0;m<size;m++)   
+       {
+              copy[m]=arr[m];
+       }
+       for(m=0;m<size;m++)
+       {
+              k=1;
+              for(n=m+1;n<size;n++)
+              {
+                     if(arr[m]==copy[n])
+                     {
+
+
+                       k++;
+                       copy[n]=-1;
+                     }
+              }
+              arr2[count]=k;
+              count++;
+
+
+
+
+       }
+       for(m=0;m<count;m++)
+       {
+           for(n=m+1;n<count;n++)
+           {
+                  if(arr2[m]==arr2[n] && arr2[m]>1)
+                  {
+                         count2=1;
+                  }
+           }
+       }
+       if(count2==1)
+       {
+              printf("\nTrue");
+       }
+       else{
+
+
+              printf("\nFalse");
+       }
+}
+int main()
+{
+        int size,k,i;
+    printf("Enter Array Size= ");
+    scanf("%d",&size);
+    int arr[size];
+    printf("\nEnter Array Elements= ");
+    for(i=0; i<size; i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    Repetition(arr,size);
+    return 0;
+
+
+}
+
+
+
+
+
+
+ 
+ 
+
